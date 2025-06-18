@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/invoice-frontend/static/css/main.188ad629.css",
+    "main.js": "/invoice-frontend/static/js/main.18bdd5b9.js",
+    "static/js/977.b584b783.chunk.js": "/invoice-frontend/static/js/977.b584b783.chunk.js",
+    "static/js/455.fe4744a1.chunk.js": "/invoice-frontend/static/js/455.fe4744a1.chunk.js",
+    "static/js/453.54292a4b.chunk.js": "/invoice-frontend/static/js/453.54292a4b.chunk.js",
+    "static/media/teton_logo.jpg": "/invoice-frontend/static/media/teton_logo.9edcb163f217bd2adf52.jpg",
+    "index.html": "/invoice-frontend/index.html",
+    "main.188ad629.css.map": "/invoice-frontend/static/css/main.188ad629.css.map",
+    "main.18bdd5b9.js.map": "/invoice-frontend/static/js/main.18bdd5b9.js.map",
+    "977.b584b783.chunk.js.map": "/invoice-frontend/static/js/977.b584b783.chunk.js.map",
+    "455.fe4744a1.chunk.js.map": "/invoice-frontend/static/js/455.fe4744a1.chunk.js.map",
+    "453.54292a4b.chunk.js.map": "/invoice-frontend/static/js/453.54292a4b.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.188ad629.css",
+    "static/js/main.18bdd5b9.js"
+  ]
+}
