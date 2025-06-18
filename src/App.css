@@ -1,38 +1,278 @@
+body, .App {
+  font-family: 'Inter', 'Roboto', 'Segoe UI', Arial, sans-serif;
+  background: #181c23;
+  color: #f3f6fa;
+}
+
 .App {
+  max-width: 700px;
+  margin: 40px auto;
+  padding: 32px 32px 16px 32px;
+  background: #232733;
+  border-radius: 18px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.25);
+}
+
+.onscreen-form > div:first-child {
+  font-size: 2em;
+  font-weight: 700;
+  color: #60a5fa;
+  margin-bottom: 18px;
+}
+
+.onscreen-form label {
+  font-weight: 500;
+  margin-right: 6px;
+  color: #cbd5e1;
+}
+
+.onscreen-form input[type="text"],
+.onscreen-form input[type="number"],
+.onscreen-form input[type="date"] {
+  padding: 7px 12px;
+  margin: 6px 0 10px 0;
+  border: 1px solid #374151;
+  border-radius: 6px;
+  font-size: 1em;
+  width: 100%;
+  box-sizing: border-box;
+  background: #232733;
+  color: #f3f6fa;
+  transition: border 0.2s, background 0.2s;
+}
+.onscreen-form input:focus {
+  border: 1.5px solid #60a5fa;
+  outline: none;
+  background: #181c23;
+}
+
+.recipient-section {
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 24px;
+}
+
+.recipient-block {
+  flex: 1;
+  max-width: 350px;
+  margin-right: 24px;
+}
+
+.recipient-block strong {
+  font-weight: bold;
+}
+
+.table-section {
+  margin-bottom: 24px;
+}
+
+.services-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin-bottom: 0;
+  background: #232733;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.15);
+}
+
+.services-table th, .services-table td {
+  padding: 10px 12px;
+  text-align: right;
+}
+
+.services-table th {
+  background: #2563eb;
+  color: #f3f6fa;
+  font-weight: 600;
+  text-align: center;
+  border-bottom: 2px solid #374151;
+}
+
+.services-table td:first-child, .services-table th:first-child {
+  text-align: left;
+}
+
+.services-table tbody tr:nth-child(even) {
+  background: #232733;
+}
+
+.services-table tbody tr:nth-child(odd) {
+  background: #181c23;
+}
+
+.services-table input {
+  background: #232733 !important;
+  color: #f3f6fa !important;
+  border: 1px solid #374151;
+  border-radius: 4px;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 7px 8px;
+  font-size: 1em;
+  margin: 0;
+  outline: none;
+  transition: border 0.2s, background 0.2s;
+}
+.services-table input:focus {
+  border: 1.5px solid #60a5fa !important;
+  background: #181c23 !important;
+}
+
+.services-table td {
+  vertical-align: middle;
+}
+
+.totals {
+  margin-top: 18px;
+  text-align: right;
+  background: #181c23;
+  border-radius: 10px;
+  padding: 18px 20px 10px 0;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.15);
+}
+.totals div {
+  margin-bottom: 4px;
+  font-size: 1.1em;
+  color: #f3f6fa;
+}
+.totals .total {
+  font-size: 1.3em;
+  font-weight: bold;
+  color: #60a5fa;
+}
+
+.bank-info {
+  margin-top: 40px;
+  border-top: 1px solid #ccc;
+  padding-top: 16px;
+  font-size: 1em;
+}
+
+button {
+  margin-top: 10px;
+  padding: 8px 20px;
+  background: #2563eb;
+  border: none;
+  border-radius: 6px;
+  color: #f3f6fa;
+  font-size: 1em;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+button:hover {
+  background: #1d4ed8;
+}
+button[type="button"] {
+  background: #232733;
+  color: #60a5fa;
+  border: 1px solid #60a5fa;
+  margin-left: 8px;
+}
+button[type="button"]:hover {
+  background: #181c23;
+}
+
+@media (max-width: 600px) {
+  .App {
+    padding: 10px 2vw;
+  }
+  .recipient-section {
+    flex-direction: column;
+  }
+  .recipient-block {
+    margin-right: 0;
+    margin-bottom: 12px;
+  }
+  .totals {
+    padding-right: 0;
+  }
+}
+
+/* Classic invoice style for PDF export */
+#invoice-area.invoice-pdf-style {
+  background: #fff;
+  color: #222;
+  font-family: 'Times New Roman', Times, serif;
+  padding: 40px 30px;
+  width: 800px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  font-size: 1.25em;
+}
+#invoice-area.invoice-pdf-style .invoice-header {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  margin-bottom: 32px;
+}
+#invoice-area.invoice-pdf-style .invoice-header .header-info {
+  margin-left: auto;
+  text-align: right;
+  font-size: 1.1em;
+}
+#invoice-area.invoice-pdf-style .invoice-header img.logo {
+  width: 120px;
+  height: auto;
+  margin-right: 32px;
+}
+#invoice-area.invoice-pdf-style .recipient-section {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 24px;
+}
+#invoice-area.invoice-pdf-style .recipient-block {
+  min-width: 300px;
+  font-size: 1.1em;
+}
+#invoice-area.invoice-pdf-style .recipient-block strong {
+  font-weight: bold;
+}
+#invoice-area.invoice-pdf-style .table-section {
+  margin-top: 24px;
+}
+#invoice-area.invoice-pdf-style .services-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 24px;
+}
+#invoice-area.invoice-pdf-style .services-table th,
+#invoice-area.invoice-pdf-style .services-table td {
+  border: 1px solid #ccc;
+  padding: 8px 12px;
+  text-align: right;
+}
+#invoice-area.invoice-pdf-style .services-table th {
+  background: #f3f3f3;
+  color: #222;
+  font-weight: bold;
   text-align: center;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+#invoice-area.invoice-pdf-style .services-table td:first-child,
+#invoice-area.invoice-pdf-style .services-table th:first-child {
+  text-align: left;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+#invoice-area.invoice-pdf-style .totals {
+  margin-top: 16px;
+  text-align: right;
+  font-size: 1.1em;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+#invoice-area.invoice-pdf-style .totals .total {
+  font-weight: bold;
+  font-size: 1.2em;
 }
-
-.App-link {
-  color: #61dafb;
+#invoice-area.invoice-pdf-style .bank-info {
+  margin-top: 64px;
+  border-top: 2px solid #f3f3f3;
+  padding-top: 16px;
+  font-size: 1em;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+#invoice-area.invoice-pdf-style .services-table,
+#invoice-area.invoice-pdf-style .services-table th,
+#invoice-area.invoice-pdf-style .services-table td,
+#invoice-area.invoice-pdf-style .totals {
+  background: #fff !important;
+  color: #222 !important;
 }

@@ -1,0 +1,70 @@
+#invoice-area.invoice-pdf-style {
+  background: #fff;
+  color: #222;
+  font-family: 'Times New Roman', Times, serif;
+  padding: 40px 30px;
+  width: 800px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  font-size: 1.25em;
+}
+#invoice-area.invoice-pdf-style .logo {
+  width: 120px;
+  height: auto;
+  margin-right: 32px;
+}
+#invoice-area.invoice-pdf-style .header-info {
+  text-align: right;
+  font-size: 1.1em;
+}
+#invoice-area.invoice-pdf-style .recipient-block,
+#invoice-area.invoice-pdf-style .sender-block {
+  font-size: 1.1em;
+  font-family: 'Times New Roman', Times, serif;
+}
+#invoice-area.invoice-pdf-style .recipient-block strong,
+#invoice-area.invoice-pdf-style .sender-block {
+  font-weight: bold;
+}
+#invoice-area.invoice-pdf-style .recipient-sender-row {
+  display: flex;
+  flex-direction: row;
+  margin-top: 32px;
+  margin-bottom: 16px;
+}
+#invoice-area.invoice-pdf-style .services-table,
+#invoice-area.invoice-pdf-style .services-table th,
+#invoice-area.invoice-pdf-style .services-table td,
+#invoice-area.invoice-pdf-style .totals {
+  background: #fff !important;
+  color: #222 !important;
+}
+#invoice-area.invoice-pdf-style .services-table th {
+  background: #f3f3f3;
+  color: #222;
+  font-weight: bold;
+  text-align: center;
+}
+#invoice-area.invoice-pdf-style .services-table td:first-child,
+#invoice-area.invoice-pdf-style .services-table th:first-child {
+  text-align: left;
+}
+#invoice-area.invoice-pdf-style .totals {
+  font-size: 1.1em;
+  text-align: right;
+}
+#invoice-area.invoice-pdf-style .totals .total {
+  font-weight: bold;
+  font-size: 1.2em;
+}
+#invoice-area.invoice-pdf-style .bank-info {
+  margin-top: 64px;
+  border-top: none;
+  padding-top: 16px;
+  font-size: 1em;
+}
+#invoice-area.invoice-pdf-style .invoice-separator {
+  border: none;
+  border-top: 2px solid #f3f3f3;
+  margin: 48px 0 24px 0;
+} 
