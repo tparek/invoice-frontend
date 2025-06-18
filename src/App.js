@@ -34,6 +34,8 @@ function App() {
   const [subtotal, setSubtotal] = useState(0);
   const [vat, setVat] = useState(0);
   const [total, setTotal] = useState(0);
+  const [invoices, setInvoices] = useState([]);
+  const [editingId, setEditingId] = useState(null);
 
   // Fetch next invoice number from backend
   useEffect(() => {
@@ -57,6 +59,13 @@ function App() {
     // eslint-disable-next-line
   }, [JSON.stringify(services)]);
 
+  // Fetch all invoices
+  useEffect(() => {
+    fetch('https://invoice-backend-r6a9.onrender.com/invoices')
+      .then(res => res.json())
+      .then(data => setInvoices(data));
+  }, [editingId]);
+
   const handleServiceChange = (idx, field, value) => {
     const updated = services.map((s, i) =>
       i === idx ? { ...s, [field]: field === 'description' ? value : Number(value) } : s
@@ -76,6 +85,22 @@ function App() {
     setClient({ ...client, [field]: value });
   };
 
+  // Load invoice into form for editing
+  const handleSelectInvoice = (inv) => {
+    setEditingId(inv.id);
+    setInvoiceNumber(inv.invoice_number);
+    setDate(inv.date);
+    setPaymentTerm(inv.payment_term);
+    setClient({
+      companyName: inv.client_company_name,
+      address: inv.client_address,
+      regNr: inv.client_reg_nr,
+      kmkrNr: inv.client_kmkr_nr,
+    });
+    setServices(inv.services.map(s => ({ ...s, sum: s.amount * s.price })));
+  };
+
+  // Modified handleSubmit for create/update
   const handleSubmit = async e => {
     e.preventDefault();
     const invoice = {
@@ -90,13 +115,24 @@ function App() {
       vat,
       total,
     };
-    const res = await fetch('https://invoice-backend-r6a9.onrender.com/invoices', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(invoice),
-    });
+    let res;
+    if (editingId) {
+      res = await fetch(`https://invoice-backend-r6a9.onrender.com/invoices/${editingId}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(invoice),
+      });
+    } else {
+      res = await fetch('https://invoice-backend-r6a9.onrender.com/invoices', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(invoice),
+      });
+    }
     if (res.ok) {
-      alert('Invoice saved!');
+      alert(editingId ? 'Invoice updated!' : 'Invoice saved!');
+      setEditingId(null);
+      // Optionally reset form here
     } else {
       alert('Error saving invoice');
     }
@@ -276,6 +312,20 @@ function App() {
           <button type="button" onClick={handleDownloadPDF} style={{ marginLeft: 10 }}>Download PDF</button>
         </div>
       </form>
+      <div className="invoice-list">
+        <h2>Saved Invoices</h2>
+        <ul>
+          {invoices.map(inv => (
+            <li
+              key={inv.id}
+              style={{ cursor: 'pointer', fontWeight: editingId === inv.id ? 'bold' : 'normal', background: editingId === inv.id ? '#223' : 'transparent', color: editingId === inv.id ? '#fff' : 'inherit', padding: 6, borderRadius: 4, marginBottom: 4 }}
+              onClick={() => handleSelectInvoice(inv)}
+            >
+              #{inv.invoice_number} - {inv.client_company_name} ({inv.date})
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 }
